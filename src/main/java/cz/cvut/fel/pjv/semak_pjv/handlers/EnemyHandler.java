@@ -90,17 +90,15 @@ public class EnemyHandler {
         int nextX = (int)(enemy.getX() + getSpeedAndWidth(enemy.getLastDirection(), enemy.getEnemyType()));
         int nextY = (int)(enemy.getY() + getSpeedAndHeight(enemy.getLastDirection(), enemy.getEnemyType()));
 
-        if (getBlockType(nextX, nextY) == ROAD_BLOCK) {
+        if (getBlockType(nextX, nextY) == ROAD_BLOCK)
             enemy.move(enemy.getLastDirection(), getSpeed(enemy.getEnemyType()));
-        } else if (isAtTheEnd(enemy)) {
+        else if (isAtTheEnd(enemy)) {
             enemy.die();
             LOGGER.info("One life is lost");
             playing.removeOneLife();
-        } else {
+        } else
             setNewDirectionAndMove(enemy);
-        }
     }
-
 
     /**
      * Updates the start and end points of enemy paths.
@@ -300,6 +298,4 @@ public class EnemyHandler {
     public PathCoordinate getEnd() {
         return end;
     }
-
-
 }

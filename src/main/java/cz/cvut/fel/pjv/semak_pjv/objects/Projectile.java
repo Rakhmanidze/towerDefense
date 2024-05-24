@@ -7,9 +7,9 @@ import java.awt.geom.Point2D;
  */
 public class Projectile {
     private Point2D.Float position;
-    private final int id, projectileType, damage;
+    private int id, projectileType, damage;
     private boolean active = true;
-    private final float xSpeed, ySpeed, rotation;
+    private float xSpeed, ySpeed, rotation;
 
     /**
      * Constructs a Projectile object with the specified parameters.
@@ -30,6 +30,15 @@ public class Projectile {
         this.rotation = rotation;
         this.id = id;
         this.projectileType = projectileType;
+    }
+
+    public void reuse(int x, int y, float xSpeed, float ySpeed, int damage, float rotate) {
+        position = new Point2D.Float(x, y);
+        this.xSpeed = xSpeed;
+        this.ySpeed = ySpeed;
+        this.damage = damage;
+        this.rotation = rotate;
+        active = true;
     }
 
     /**

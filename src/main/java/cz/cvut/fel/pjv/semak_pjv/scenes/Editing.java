@@ -17,7 +17,7 @@ import static cz.cvut.fel.pjv.semak_pjv.helperMethods.GameData.Blocks.getBLockTy
 /**
  * Represents the editing scene in the game.
  */
-public class Editing extends GameScene implements SceneMethods {
+public class Editing extends GameScene implements SceneMethods, ExtraSceneMethods {
     private int[][] level;
     private final BlockHandler blockHandler;
     private final EditingBottomPanel editingBottomPanel;
@@ -199,12 +199,13 @@ public class Editing extends GameScene implements SceneMethods {
     }
 
     /**
-     * Saves the current level data and path coordinates to a save file.
+     * Saves the current level data and path coordinates to a save file and restarts game if its running.
      */
     public void saveLevel() {
         DownloadSave.saveLevel("currentLevel", level, start, end);
         getTowerDefense().getPlaying().setLevel(level, start, end);
         getTowerDefense().getPlaying().getEnemyHandler().updateStartAndEnd(start, end);
+
     }
 
 //    Getters and setters

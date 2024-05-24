@@ -91,20 +91,20 @@ public class ProjectileHandler {
         float xSpeed = xPercentage * getSpeed(type);
         float ySpeed = yPercentage * getSpeed(type);
 
-//        if (t.getX() > e.getX())
-//            xSpeed *= -1;
-//        if (t.getY() > e.getY())
-//            ySpeed *= -1;
-
         if (t.getX() > e.getX())
             xSpeed *= -1;
-        else
-            xSpeed *= 1;
-
         if (t.getY() > e.getY())
             ySpeed *= -1;
-        else
-            ySpeed *= 1;
+
+//        if (t.getX() > e.getX())
+//            xSpeed *= -1;
+//        else
+//            xSpeed *= 1;
+//
+//        if (t.getY() > e.getY())
+//            ySpeed *= -1;
+//        else
+//            ySpeed *= 1;
 
         float rotate = 0;
         if (type == ARROW) {
@@ -115,6 +115,13 @@ public class ProjectileHandler {
                 rotate += 180;
         }
 
+        for (Projectile projectile: projectiles)
+            if (!projectile.isActive() && projectile.getProjectileType() == type) {
+                projectile.reuse(t.getX() + 16,t.getY() + 16, xSpeed, ySpeed, t.getDamage(), rotate);
+                return;
+            }
+
+
         projectiles.add(new Projectile(t.getX() + 16,t.getY() + 16, xSpeed, ySpeed, t.getDamage(), rotate, projectile_id++, type));
 
     }
@@ -123,6 +130,8 @@ public class ProjectileHandler {
      * Updates the positions and states of projectiles and explosions.
      */
     public void update() {
+        // tmp
+        printProjectilesSize();
         for (Projectile pt : projectiles)
             if (pt.isActive()) {
                 pt.move();
@@ -137,6 +146,21 @@ public class ProjectileHandler {
 
         for (Explosion e : explosions)
             e.update();
+    }
+
+//    tmp
+    boolean printSize =  false;
+    float lastPrint = 0;
+    private void printProjectilesSize() {
+        if (printSize) {
+            System.out.println("Project size: " + projectiles.size());
+            printSize = false;
+        } else {
+            if (System.currentTimeMillis() >= lastPrint + 65000) {
+                printSize = true;
+                lastPrint = System.currentTimeMillis();
+            }
+        }
     }
 
     /**

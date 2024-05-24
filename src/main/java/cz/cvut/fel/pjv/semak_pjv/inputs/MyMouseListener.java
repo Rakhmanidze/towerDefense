@@ -56,12 +56,7 @@ public class MyMouseListener implements EventHandler<MouseEvent> {
             else if (GameStates.gameState == GAME_WON)
                 towerDefense.getGameWon().mouseMoved((int) event.getX(), (int) event.getY());
 
-        }  else if (event.getEventType() == MouseEvent.MOUSE_DRAGGED) {
-
-            if (GameStates.gameState == PLAYING)
-                towerDefense.getPlaying().mouseDragged((int) event.getX(), (int) event.getY());
-            else if (GameStates.gameState == EDITING)
-                towerDefense.getEditing().mouseDragged((int) event.getX(), (int) event.getY());
-        }
+        } else if (event.getEventType() == MouseEvent.MOUSE_DRAGGED)
+            towerDefense.getEditing().mouseDragged((int) event.getX(), (int) event.getY());
     }
 }

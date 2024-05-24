@@ -61,7 +61,7 @@ public class GameOver extends GameScene implements SceneMethods {
      * Restarts the game by resetting all game components.
      */
     private void replayGame() {
-        getTowerDefense().getPlaying().resetEverything();
+        resetEverything();
 
         setGameState(PLAYING);
     }
@@ -118,9 +118,5 @@ public class GameOver extends GameScene implements SceneMethods {
     public void mouseMoved(int x, int y) {
         buttonReplay.setButtonHovered(buttonReplay.getBounds().contains(x, y));
         buttonMenu.setButtonHovered(buttonMenu.getBounds().contains(x, y));
-    }
-
-    @Override
-    public void mouseDragged(int x, int y) {
     }
 }

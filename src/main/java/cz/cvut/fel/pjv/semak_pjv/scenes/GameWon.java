@@ -120,8 +120,4 @@ public class GameWon extends GameScene implements SceneMethods {
         buttonReplay.setButtonHovered(buttonReplay.getBounds().contains(x, y));
         buttonMenu.setButtonHovered(buttonMenu.getBounds().contains(x, y));
     }
-
-    @Override
-    public void mouseDragged(int x, int y) {
-    }
 }

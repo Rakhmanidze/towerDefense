@@ -112,8 +112,4 @@ public class Menu extends GameScene implements SceneMethods {
         buttonEdit.setButtonHovered(buttonEdit.getBounds().contains(x, y));
         bExit.setButtonHovered(bExit.getBounds().contains(x, y));
     }
-
-    @Override
-    public void mouseDragged(int x, int y) {
-    }
 }
