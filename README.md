@@ -1,5 +1,5 @@
 # towerDefense
-Repository for a Tower Defense game project. Contains source code for a Java-based tower defense game implementation."
+"Repository containing the source code and resources for a Java-based Tower defense game."
 
 "here is a link for the user manual:
 https://github.com/Rakhmanidze/towerDefense/wiki
